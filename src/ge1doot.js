@@ -1,4 +1,3 @@
-
 var ge1doot = ge1doot || {
     /*
              \|||/
@@ -12,53 +11,55 @@ var ge1doot = ge1doot || {
              || ||
             ooO Ooo
     */
-    
+
     screen: {
-        elem:     null,
+        elem: null,
         callback: null,
-        ctx:      null,
-        width:    0,
-        height:   0,
-        left:     0,
-        top:      0,
-        init: function (id, callback, initRes) {
+        ctx: null,
+        width: 0,
+        height: 0,
+        left: 0,
+        top: 0,
+        init: function(id, callback, initRes) {
             this.elem = document.getElementById(id);
             this.callback = callback || null;
             if (this.elem.tagName == "CANVAS") this.ctx = this.elem.getContext("2d");
-            window.addEventListener('resize', function () {
+            window.addEventListener('resize', function() {
                 this.resize();
             }.bind(this), false);
-            this.elem.onselectstart = function () { return false; }
-            this.elem.ondrag        = function () { return false; }
+            this.elem.onselectstart = function() {
+                return false; }
+            this.elem.ondrag = function() {
+                return false; }
             initRes && this.resize();
             return this;
         },
-        resize: function () {
+        resize: function() {
             var o = this.elem;
-            this.width  = o.offsetWidth;
+            this.width = o.offsetWidth;
             this.height = o.offsetHeight;
             for (this.left = 0, this.top = 0; o != null; o = o.offsetParent) {
                 this.left += o.offsetLeft;
-                this.top  += o.offsetTop;
+                this.top += o.offsetTop;
             }
             if (this.ctx) {
-                this.elem.width  = this.width;
+                this.elem.width = this.width;
                 this.elem.height = this.height;
             }
             this.callback && this.callback();
         },
         pointer: {
-            screen:   null,
-            elem:     null,
+            screen: null,
+            elem: null,
             callback: null,
-            pos:   {x:0, y:0},
-            mov:   {x:0, y:0},
-            drag:  {x:0, y:0},
-            start: {x:0, y:0},
-            end:   {x:0, y:0},
+            pos: { x: 0, y: 0 },
+            mov: { x: 0, y: 0 },
+            drag: { x: 0, y: 0 },
+            start: { x: 0, y: 0 },
+            end: { x: 0, y: 0 },
             active: false,
             touch: false,
-            down: function (e, touch) {
+            down: function(e, touch) {
                 this.touch = touch;
                 if (touch) e.preventDefault();
                 var pointer = touch ? e.touches[0] : e;
@@ -67,7 +68,7 @@ var ge1doot = ge1doot || {
                 this.active = true;
                 this.callback.down && this.callback.down();
             },
-            up: function (e, touch) {
+            up: function(e, touch) {
                 this.touch = touch;
                 e.preventDefault();
                 this.end.x = this.drag.x;
@@ -75,7 +76,7 @@ var ge1doot = ge1doot || {
                 this.active = false;
                 this.callback.up && this.callback.up();
             },
-            move: function (e, touch) {
+            move: function(e, touch) {
                 this.touch = touch;
                 e.preventDefault();
                 var pointer = touch ? e.touches[0] : e;
@@ -89,24 +90,23 @@ var ge1doot = ge1doot || {
                     this.callback.move && this.callback.move();
                 }
             },
-            init: function (callback) {
+            init: function(callback) {
                 this.screen = ge1doot.screen;
                 this.elem = this.screen.elem;
                 this.callback = callback || {};
                 if ('ontouchstart' in window) {
                     // touch
-                    this.elem.ontouchstart  = function (e) { this.down(e, true); }.bind(this);
-                    this.elem.ontouchmove   = function (e) { this.move(e, true); }.bind(this);
-                    this.elem.ontouchend    = function (e) { this.up(e, true);   }.bind(this);
-                    this.elem.ontouchcancel = function (e) { this.up(e, true);   }.bind(this);
+                    this.elem.ontouchstart = function(e) { this.down(e, true); }.bind(this);
+                    this.elem.ontouchmove = function(e) { this.move(e, true); }.bind(this);
+                    this.elem.ontouchend = function(e) { this.up(e, true); }.bind(this);
+                    this.elem.ontouchcancel = function(e) { this.up(e, true); }.bind(this);
                 }
                 // mouse
-                this.elem.addEventListener("mousedown", function (e) { this.down(e, false); }.bind(this), true);
-                document.addEventListener("mousemove", function (e) { this.move(e, false); }.bind(this), true);
-                document.addEventListener("mouseup",   function (e) { this.up  (e, false); }.bind(this), true);
+                this.elem.addEventListener("mousedown", function(e) { this.down(e, false); }.bind(this), true);
+                document.addEventListener("mousemove", function(e) { this.move(e, false); }.bind(this), true);
+                document.addEventListener("mouseup", function(e) { this.up(e, false); }.bind(this), true);
                 return this;
             }
         }
     }
 }
-
