@@ -118,19 +118,7 @@
         var picUrl = gallery.picUrl;
         for (var i = 0; i < 2; i++) {
             for (var j = 0; j < 4; j++) {
-                if (i === 0) {
-                    if (j < 2) {
-                        createElement('div', {
-                            'width': '1000px',
-                            'height': '1000px',
-                            'backgroundImage': 'url(' + picUrl + ')',
-                            'backgroundPosition': j * x + ' 0',
-                        }, {
-                            'data-transform': 'rotateX(' + (j === 0 ? '-' : '') + '90deg) translateZ(-' + z / 2 + 'px)',
-                            'class': 'f'
-                        });
-                    }
-                } else {
+                if (i !== 0) {
                     // createElement('div', {
                     //     'width': '1000px',
                     //     'height': '600px',
@@ -139,6 +127,19 @@
                     // }, {
                     //     'data-transform': 'rotateY(' + 90 * j + 'deg) translateZ(-500px)'
                     // });
+                } else {
+                    if (j < 2) {
+                       // createElement('div', {
+                       //      'width': '1000px',
+                       //      'height': '1000px',
+                       //      'backgroundImage': 'url(' + picUrl + ')',
+                       //      'backgroundPosition': j * x + ' 0',
+                       //  }, {
+                       //      'data-transform': 'rotateX(' + (j === 0 ? '-' : '') + '90deg) translateZ(-' + z / 2 + 'px)',
+                       //      'class': 'f'
+                       //  });
+                    }
+                    
                 }
 
             }
