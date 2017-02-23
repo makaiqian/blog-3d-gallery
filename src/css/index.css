@@ -51,6 +51,9 @@ body {
     height: 400px;
     margin: -200px -250px;
     overflow-y: scroll;
+    background: rgba(0,0,0,0.6);
+    padding: 15px;
+    border-radius: 10px;
 }
 
 
