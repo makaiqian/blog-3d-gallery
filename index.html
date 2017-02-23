@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Gallery</title>
     <link rel="stylesheet" href="src/css/index.css">
 </head>
 
@@ -22,11 +22,31 @@
             <!-- 天花板 -->
             <img class="f" src="src/image/ceiling.jpg" data-transform="rotateX(-90deg) translateZ(-300px)">
             <!-- 天花板 end -->
+            <div class="duoshuo" data-transform="rotateY(90deg) translateZ(-500px)">
+                <!-- 多说评论框 start -->
+                <div class="ds-thread" data-thread-key="gallery" data-title="油画" data-url="gallery.makaiqian.com"></div>
+                <!-- 多说评论框 end -->
+                <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+                <script type="text/javascript">
+                var duoshuoQuery = {
+                    short_name: "makaiqian"
+                };
+                (function() {
+                    var ds = document.createElement('script');
+                    ds.type = 'text/javascript';
+                    ds.async = true;
+                    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+                    ds.charset = 'UTF-8';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+                })();
+                </script>
+                <!-- 多说公共JS代码 end -->
+            </div>
+                
         </div>
     </div>
     <script src="src/js/ge1doot.js"></script>
     <script src="src/js/index.js"></script>
-    
 </body>
 
 </html>
