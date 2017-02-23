@@ -46,4 +46,11 @@ body {
     margin: -500px -500px;
 }
 
+#scene .duoshuo {
+    width: 500px;
+    height: 400px;
+    margin: -200px -250px;
+    overflow-y: scroll;
+}
+
 
